@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Create button element
+        const button = document.createElement('button');
+        button.textContent = 'Stop Color Change';
+        document.body.appendChild(button);
+
+function generateRandomColor() {
+  const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+  document.body.style.backgroundColor = randomColor;
+}
+
+let intervalId; // Declare intervalId outside to access it in event listener
+
+// Function to stop color change and display color value in the button
+function stopColorChange() {
+  clearInterval(intervalId); // Stop color change interval
+  button.textContent = '' + document.body.style.backgroundColor; // Display current color in button
+}
+
+// Interval to change color every second
+intervalId = setInterval(generateRandomColor,1000);
+
+// Stop color change and display color value on button click
+button.addEventListener('click', stopColorChange);
+</script>
+</body>
+</html>
